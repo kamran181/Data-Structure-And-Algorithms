@@ -250,3 +250,26 @@ let twoSum2 = function (arr, target) {
 };
 
 console.log(twoSum2([1, 4, 6, 7, 2], 13));  
+
+
+
+//9 @ Group Anagrams.  Input: strs = ["eat","tea","tan","ate","nat","bat"]    TC = O(N * NLOGN)
+//.                   OutPut:[["bat"],["nat","tan"],["ate","eat","tea"]]      SC = 0(N)
+
+let groupAnagram = function (strs){
+  let hash= {};
+
+  for(i=0 ; i<strs.length ; i++){
+    let sorted = strs[i].split('').sort().join('');
+    if(hash[sorted]){
+      hash[sorted].push(strs[i])
+    }
+    else{
+      hash[sorted] = [strs[i]]
+    }
+  }
+
+  return Object.values(hash)
+}
+
+console.log(groupAnagram(["ate","bat","cat","dog","hog","ant","tan","tab","table"]));
