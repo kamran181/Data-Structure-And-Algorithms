@@ -273,3 +273,31 @@ let groupAnagram = function (strs){
 }
 
 console.log(groupAnagram(["ate","bat","cat","dog","hog","ant","tan","tab","table"]));
+
+
+//@10 TopKFrequent Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
+//Input: nums = [1,1,1,2,2,3], k = 2
+//Output: [1,2]
+
+let TopKFrequent = function(nums,k){
+  let hash ={};
+  let res = []
+
+  for(let val in nums){
+    hash[nums[val]] ? hash[nums[val]]++ : hash[nums[val]] = 1;
+  }
+ 
+  let sort = Object.entries(hash).sort((a,b)=> b[1]-a[1]).splice(0,k);
+
+  for(let i in sort){
+    res.push(parseInt(sort[i][0]))
+  }
+
+  return res;
+
+
+  
+
+}
+
+console.log(TopKFrequent([1,1,1,2,2,3],2))
