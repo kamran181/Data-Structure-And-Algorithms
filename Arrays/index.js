@@ -275,8 +275,11 @@ let groupAnagram = function (strs){
 console.log(groupAnagram(["ate","bat","cat","dog","hog","ant","tan","tab","table"]));
 
 
-//@10 TopKFrequent Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
-//Input: nums = [1,1,1,2,2,3], k = 2
+//@10 TopKFrequent 
+
+
+//10.1 Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
+//Input: nums = [1,1,1,2,2,3], k = 2    TC={NLOGN}  SC=ON
 //Output: [1,2]
 
 let TopKFrequent = function(nums,k){
@@ -301,3 +304,34 @@ let TopKFrequent = function(nums,k){
 }
 
 console.log(TopKFrequent([1,1,1,2,2,3],2))
+
+
+//10.2 TOP k FREQUENT using bucket sort
+
+
+function topKFrequentt(nums, k) {
+  let hash = {};
+  let bucket = [];
+  let res = [];
+
+  for (let val in nums) {
+    hash[nums[val]] ? hash[nums[val]]++ : (hash[nums[val]] = 1);
+  }
+
+  for (let num in hash) {
+    if (bucket[hash[num]]) {
+      bucket.push(parseInt(num));
+    } else {
+      bucket[hash[num]] = parseInt(num);
+    }
+  }
+
+  for (let i = bucket.length - 1; i >= 0; i--) {
+    if (res.length < k && bucket[i] !== undefined) {
+      res.push(bucket[i]);
+    }
+  }
+  return res;
+}
+
+console.log(topKFrequentt([1, 1, 1, 2, 2, 3], 2));
