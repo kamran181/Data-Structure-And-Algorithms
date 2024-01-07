@@ -335,3 +335,70 @@ function topKFrequentt(nums, k) {
 }
 
 console.log(topKFrequentt([1, 1, 1, 2, 2, 3], 2));
+
+// 11 Product of an array except itself
+
+
+// @ 11.1 using only one array
+// arr   =  [1,  2,  3, 4]
+
+// res =  [1,  1,  2, 6] product // 1 ,1,2,6
+
+// res2   =  [24, 12, 8, 6]  product 1,4,12,24
+
+let prodtuctExceptItself = function(nums){
+  let res=[];
+  let product = 1;
+
+  for(i=0; i<nums.length ; i++){
+    res[i] = product;
+    product *= nums[i];
+  }
+
+  product=1;
+
+  for(i=nums.length-1; i>=0 ; i--){
+    res[i] *= product;
+    product *= nums[i];
+  }
+
+  return res;
+}
+
+console.log(prodtuctExceptItself([1,2,3,4]));
+
+
+//@11.2 using prefix and suffix
+// arr   =  [1,  2,  3, 4]
+
+// prefix =  [1,  1,  2, 6]
+
+// suffix  =  [24, 12, 4, 1] // 1  4  12
+// -----------------------
+// res   =  [24, 12, 8, 6]
+
+let product = function (nums){
+  let res=[];
+  let prefix =[];
+  let suffix = [];
+  let product=1;
+
+  for(i=0; i<nums.length ; i++){
+    prefix[i] = product;
+    product *= nums[i];
+  }
+
+  product =1;
+  for(i=nums.length-1 ; i>=0 ; i--){
+    suffix[i] = product;
+    product *= nums[i];
+  }
+
+  for (i=0 ; i<nums.length ; i++){
+    res[i]= prefix[i]*suffix[i] ;
+  }
+
+  return res
+}
+
+console.log('baba',product([1,2,3,4]));
