@@ -387,7 +387,7 @@ let product = function (nums){
     prefix[i] = product;
     product *= nums[i];
   }
-
+  
   product =1;
   for(i=nums.length-1 ; i>=0 ; i--){
     suffix[i] = product;
@@ -402,3 +402,52 @@ let product = function (nums){
 }
 
 console.log('baba',product([1,2,3,4]));
+
+
+// @12 valid sudoku TC= O(n2)
+
+let validSudoku = function (board){
+  let row = new Set();
+  let column = new Set();
+  let box = new Set();
+
+  for(i=0; i<9 ; i++){
+
+    row.clear();
+    column.clear();
+    box.clear();
+    for(j=0 ;j<9 ;j++){
+      //checking for each row
+        if((board[i][j]) !== '.'){
+          if(row.has(board[i][j])) return false;
+          row.add(board[i][j])
+        }
+
+        //checking for each column
+        if(board[j][i] !== '.'){
+          if(column.has(board[j][i])) return false;
+          column.has(board[j][i])
+        }
+
+        //for each 3*3 box
+        let boxValue = board[Math.floor(i/3) + Math.floor(j/3)] [(i%3)+(j%3)];
+
+        if(boxValue !== '.'){
+          if(box.has(boxValue)) return false;
+          box.add(boxValue);
+        }
+    }
+    return true;
+  }
+}
+
+console.log(validSudoku([
+ ["8","3",".",".","7",".",".",".","."]
+,["6",".",".","1","9","5",".",".","."]
+,[".","9","8",".",".",".",".","6","."]
+,["8",".",".",".","6",".",".",".","3"]
+,["4",".",".","8",".","3",".",".","1"]
+,["7",".",".",".","2",".",".",".","6"]
+,[".","6",".",".",".",".","2","8","."]
+,[".",".",".","4","1","9",".",".","5"]
+,[".",".",".",".","8",".",".","7","9"]]))
