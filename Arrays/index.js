@@ -430,21 +430,23 @@ let validSudoku = function (board){
         }
 
         //for each 3*3 box
-        let boxValue = board[Math.floor(i/3) + Math.floor(j/3)] [(i%3)+(j%3)];
+        let boxValue = board[3*Math.floor(i/3) + Math.floor(j/3)] [3*(i%3)+(j%3)];
+        console.log(board[3*Math.floor(i/3) + Math.floor(j/3)] [3*(i%3)+(j%3)])
 
         if(boxValue !== '.'){
           if(box.has(boxValue)) return false;
           box.add(boxValue);
         }
     }
-    return true;
+    
   }
+  return true;
 }
 
 console.log(validSudoku([
- ["8","3",".",".","7",".",".",".","."]
+ ["5","3",".",".","7",".",".",".","."]
 ,["6",".",".","1","9","5",".",".","."]
-,[".","9","8",".",".",".",".","6","."]
+,[".","9","1",".",".",".",".","6","."]
 ,["8",".",".",".","6",".",".",".","3"]
 ,["4",".",".","8",".","3",".",".","1"]
 ,["7",".",".",".","2",".",".",".","6"]
