@@ -116,7 +116,7 @@ function checkPal(inp) {
 
 console.log(checkPal(abc));
 
-//5.3 to check a no is palindrome by reversing it    TC=O(1)
+//5.3 to check a no is palindrome by reversing it    TC=O(1))
 
 let num = 121;
 
@@ -453,3 +453,60 @@ console.log(validSudoku([
 ,[".","6",".",".",".",".","2","8","."]
 ,[".",".",".","4","1","9",".",".","5"]
 ,[".",".",".",".","8",".",".","7","9"]]))
+
+// @13 longest consecutive sequence
+//Input: nums = [100,4,200,1,3,2]
+//Output: 4
+//Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.
+
+// 13.1 using BRUTE FORCE
+
+let consecutiveIntegers = function(nums){
+  let count =0;
+  let max = 0;
+    for(let i=0 ; i< nums.length ; i++){
+      let value = nums[i];
+       while(nums.indexOf(value) !== -1){
+          count +=1 
+          value += 1
+          if(max <= count){
+            max = count
+          }
+       }
+       if (nums.indexOf(value) === -1) {
+        count = 0;
+      }
+    }
+
+    return max;
+}
+
+console.log(consecutiveIntegers([100,1,2,3,500,4,101,102,103,104,105,106,107]));
+
+
+//Using sorting an array
+// [100,1,2,3,200,201,202,203,204,101,205]
+// sorted [1,2,2,3,100,101,200,201,202,203,204,205]
+
+    let consec = function (nums) {
+      let sort = nums.sort((a, b) => a - b);
+      let count = 1;
+      let max = 0;
+      for (let i = 0; i < nums.length; i++) {
+        let val = sort[i];
+        if (sort[i + 1] === val + 1) {
+          count += 1;
+          if (max <= count) {
+            max = count;
+          }
+        } else if (sort[i + 1] == val) continue;
+        else {
+          count = 1;
+        }
+      }
+    
+      console.log(max);
+    };
+
+
+console.log(consec([100,1,2,3,200,201,202,203,204,101,205]))
