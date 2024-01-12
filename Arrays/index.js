@@ -426,7 +426,7 @@ let validSudoku = function (board){
         //checking for each column
         if(board[j][i] !== '.'){
           if(column.has(board[j][i])) return false;
-          column.has(board[j][i])
+          column.add(board[j][i])
         }
 
         //for each 3*3 box
@@ -484,7 +484,7 @@ let consecutiveIntegers = function(nums){
 console.log(consecutiveIntegers([100,1,2,3,500,4,101,102,103,104,105,106,107]));
 
 
-//Using sorting an array
+//13.2Using sorting an array
 // [100,1,2,3,200,201,202,203,204,101,205]
 // sorted [1,2,2,3,100,101,200,201,202,203,204,205]
 
@@ -510,3 +510,62 @@ console.log(consecutiveIntegers([100,1,2,3,500,4,101,102,103,104,105,106,107]));
 
 
 console.log(consec([100,1,2,3,200,201,202,203,204,101,205]))
+
+//13.3 using map function tc O(n2)
+
+let connsecInt = function (nums) {
+  let map = new Map();
+
+  for (let val of nums) {
+    map.set(val, 1);
+  }
+
+  for (let i in nums) {
+    if (map.has(nums[i] - 1)) {
+      map.set(nums[i], 0);
+    }
+  }
+
+  let max = 0;
+  for (let val of nums) {
+    if (map.get(val) === 1) {
+      let count = 0;
+      while (nums.indexOf(val) !== -1) {
+        val += 1;
+        count += 1;
+        if (max <= count) {
+          max = count;
+        }
+      }
+    }
+  }
+
+  return max;
+};
+
+console.log(
+  connsecInt([100, 1, 2, 3, 4, 200, 5, 201, 101, 102, 103, 104, 105, 106])
+);
+
+
+//13.4 optimized version tc =O(n)
+
+function longestConsecutivee(nums) {
+  const set = new Set(nums);
+  let max = 0;
+
+  for (const num of nums) {
+    if (set.has(num + 1)) continue;
+
+    let counter = 1,
+      current = num;
+
+    while (set.has(--current)) counter++;
+
+    max = Math.max(counter, max);
+  }
+
+  return max;
+}
+
+console.log(longestConsecutivee([100, 1, 4, 2, 3, 5, 5, 6, 7, 8, 201, 202, 90]))
