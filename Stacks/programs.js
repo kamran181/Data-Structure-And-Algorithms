@@ -44,7 +44,7 @@ console.log(validParenthesis('({[]})'));
 //You must implement a solution with O(1) time complexity for each function.
 
 
-//@2.1 in this tc =o(n2)
+//@2.1 in this tc =o(n) for min func
 
 class myStack {
     constructor() {
@@ -88,4 +88,57 @@ class myStack {
   obj.push(11);
   obj.pop();
   console.log(obj.min());
+
+  //@2.2 tc=O(1) for min() func
+  class yourStack {
+    constructor(){
+        this.stack =[];
+        this.minStack =[];
+        this.length=0;
+    }
+    push(val){
+       this.stack[this.length]=val;
+       if(this.length ===0){
+        this.minStack[this.length] = val;
+       }
+       else{
+        if(this.minStack[this.length-1]<val){
+            this.minStack[this.length]= this.minStack[this.length-1];
+        }
+        else{
+            this.minStack[this.length] = val;
+        }
+        
+       }
+       this.length ++;
+    }
+
+   pop(){
+    if(!this.length) return 'stack is empty'
+    delete this.stack[this.length-1];
+    this.length --;
+   }
+
+   top(){
+    if(!this.length) return 'stack is empty'
+    return this.stack[this.length-1]
+   }
+
+   min(){
+    if(!this.length) return 'stack is empty';
+    return this.minStack[this.length-1]
+   }
+  }
+
+  const obj1 = new yourStack();
+  obj1.push(-10);
+  obj1.push(20);
+  obj1.push(-1);
+  obj1.push(100);
+  obj1.push(0);
+  obj1.push(11);
+  obj1.pop();
+  obj1.pop();
+  console.log(obj1.top());
+  console.log('o(1) wala',obj1.min());
   
