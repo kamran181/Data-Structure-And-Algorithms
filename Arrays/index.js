@@ -568,4 +568,41 @@ function longestConsecutivee(nums) {
   return max;
 }
 
-console.log(longestConsecutivee([100, 1, 4, 2, 3, 5, 5, 6, 7, 8, 201, 202, 90]))
+console.log(longestConsecutivee([100, 1, 4, 2, 3, 5, 5, 6, 7, 8, 201, 202, 90]));
+
+//@14 // Minimum Number of Steps to Make Two Strings Anagram
+// You are given two strings of the same length s and t. In one step you can choose any character of t and replace it with another character.
+
+// Return the minimum number of steps to make t an anagram of s.
+
+// An Anagram of a string is a string that contains the same characters with a different (or the same) ordering.
+// Example 1:
+
+// Input: s = "bab", t = "aba"
+// Output: 1
+// Explanation: Replace the first 'a' in t with b, t = "bba" which is anagram of s.
+let minSteps = function (s, t) {
+  let sHash = {};
+  let tHash = {};
+  let count = 0;
+
+  for (let val in s) {
+    sHash[s[val]] ? sHash[s[val]]++ : (sHash[s[val]] = 1);
+    tHash[t[val]] ? tHash[t[val]]++ : (tHash[t[val]] = 1);
+  }
+
+  console.log(sHash, tHash);
+
+  for (let i in sHash) {
+    if (tHash[i] < sHash[i]) {
+      count += sHash[i] - tHash[i];
+    } else {
+      if (!(i in tHash)) {
+        count += sHash[i];
+      }
+    }
+  }
+  console.log(count);
+};
+
+console.log(minSteps('leetcode', 'practice'));
