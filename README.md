@@ -10,34 +10,6 @@ Linear data structures are structures where data elements are arranged sequentia
 
 Non-linear data structures are structures where data elements are not arranged sequentially or linearly. Elements can be connected to multiple other elements, forming a branching or hierarchical structure. Examples of non-linear data structures include trees, graphs, and heaps.
 
-- [Arrays](https://github.com/Danish1112/Data-structures-and-Algorithms-/tree/main/data-structure/array)
-- [Hash Table](https://github.com/Danish1112/Data-structures-and-Algorithms-/tree/main/data-structure/hash-table)
-- [Linked List](https://github.com/Danish1112/Data-structures-and-Algorithms-/tree/main/data-structure/linked-list)
-    - [Singly Linked List](https://github.com/Danish1112/Data-structures-and-Algorithms-/tree/main/data-structure/linked-list/singlyLinked-list.js)
-    - [Doubly Linked List](https://github.com/Danish1112/Data-structures-and-Algorithms-/tree/main/data-structure/linked-list/doublyLinked-list.js)
-
-- [Stack](https://github.com/Danish1112/Data-structures-and-Algorithms-/tree/main/data-structure/stack)
-- [Linked List](https://github.com/Danish1112/Data-structures-and-Algorithms-/tree/main/data-structure/queue)
-- [Tree](https://github.com/Danish1112/Data-structures-and-Algorithms-/tree/main/data-structure/tree)
-- [Graph](https://github.com/Danish1112/Data-structures-and-Algorithms-/tree/main/data-structure/graphs)
-
-# Algorithms
-An algorithm is an unambiguous specification of how to solve a class of problems. It is a set of rules that precisely define a sequence of operations.
-- [Sorting](https://github.com/Danish1112/Data-structures-and-Algorithms-/tree/main/algorithms/sorting)
-    - [Bubble sort](https://github.com/Danish9991/Data-structures-and-Algorithms-/tree/main/algorithms/sorting/bubble-sort)
-    - [Selection sort](https://github.com/Danish1112/Data-structures-and-Algorithms-/tree/main/algorithms/sorting/selection-sort)
-    - [Insertion sort](https://github.com/Danish1112/Data-structures-and-Algorithms-/tree/main/algorithms/sorting/insertion-sort)
-    - [Merge sort](https://github.com/Danish1112/Data-structures-and-Algorithms-/tree/main/algorithms/sorting/merge-sort)
-    - [Qucik sort](https://github.com/Danish1112/Data-structures-and-Algorithms-/tree/main/algorithms/sorting/quick-sort)
-
-
-
-   
-
-
-
-
-
 
   
 <hr/>
@@ -50,7 +22,7 @@ An algorithm is an unambiguous specification of how to solve a class of problems
 *Big O notation* is used to classify algorithms according to how their running time or space requirements grow as the input size grows.
 On the chart below you may find most common orders of growth of algorithms specified in Big O notation.
 
-![Big O graphs](./data-structure/assets/big-o-graph.png)
+![Big O graphs](./assets/big-o-graph.png)
 
 Source: [Big O Cheat Sheet](http://bigocheatsheet.com/).
 
