@@ -53,3 +53,52 @@ let validPlain = function (s) {
   
   console.log(validPlain('A man, a plan, a canal: Panama'));
   
+
+  // @2 Two Sum II - Input Array Is Sorted
+
+  let twoSum = function(numbers ,target){
+    let leftPointer =0;
+    let rightPointer = numbers.length-1;
+
+    while(leftPointer < rightPointer){
+      if(numbers[leftPointer]+numbers[rightPointer]>target){
+        rightPointer -= 1
+      }
+      if(numbers[leftPointer] + numbers[rightPointer] <target){
+        leftPointer += 1
+      }
+      if(numbers[leftPointer] + numbers [rightPointer] === target){
+        return [leftPointer +1, rightPointer+1]
+      }
+    }
+  }
+
+  console.log(twoSum( [1, 3, 4, 5, 7, 11], 9));
+
+  //@2.1
+  function twoSum2(numbers, target) {
+    for (let start = 0, end = numbers.length - 1; start < end; ) {
+      let sum = numbers[start] + numbers[end];
+      if (sum === target) return [++start, ++end];
+      else sum > target ? end-- : start++;
+    }
+  }
+  console.log(twoSum2( [1, 3, 4, 5, 7, 11], 9));
+  //@2.2
+
+  const twoSum3 = (numbers, target) => {
+    let p1 = 0;
+    let p2 = numbers.length - 1;
+  
+    while (numbers[p1] + numbers[p2] !== target) {
+      if (numbers[p1] + numbers[p2] > target) {
+        p2--;
+      } else {
+        p1++;
+      }
+    }
+  
+    return [p1 + 1, p2 + 1];
+  };
+  console.log(twoSum3( [1, 3, 4, 5, 7, 11], 9));
+  
