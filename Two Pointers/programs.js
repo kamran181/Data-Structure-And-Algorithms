@@ -238,3 +238,44 @@ let maxArea = function(height){
 }
 
 console.log(maxArea([1,8,6,2,5,4,8,3,7]))
+
+
+
+//@5 trapping rain water 
+
+
+
+// 5.1 by brute force tc = O(n2)  sc= o(1)
+var trap = function(height) {
+  // To store the maximum water
+ // that can be stored
+ let res = 0;
+
+ // For every element of the array
+ // except first and last element
+ for (let i = 1; i < height.length - 1; i++) {
+   // Find maximum element on its left
+   let left = height[i];
+   for (let j = 0; j < i; j++) {
+     left = Math.max(left, height[j]);
+   }
+
+   // Find maximum element on its right
+   let right = height[i];
+
+   for (let j = i + 1; j < height.length; j++) {
+     right = Math.max(right, height[j]);
+   }
+   console.log('jaja', right);
+
+   // Update maximum water value
+   res += Math.min(left, right) - height[i];
+ }
+ return res;
+};
+
+
+console.log(trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]));
+
+
+//5.2 by precalculated way 
